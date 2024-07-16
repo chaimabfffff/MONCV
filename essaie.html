@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Institut de Beauté</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('file:///Users/chaimabenfarhat/Downloads/mon_app/neutre.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            font: 400 1em/1.5"Neuton";
+        }
+
+        header {
+            background-color: rgba(81, 69, 69, 0);
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        nav {
+            background-color: rgba(51, 51, 51, 0);
+            overflow: hidden;
+            transition: background-color 0.5s;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .main-content {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .product-slider {
+            width: 30%;
+            max-height: 200px;
+        }
+
+        .product-slider img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            max-height: 300px;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #fff;
+            background: url('file:///Users/chaimabenfarhat/Downloads/mon_app/cils4.jpg') no-repeat center center;
+            background-size: cover;
+            margin: 0 auto 20px;
+        }
+
+        .info-column {
+            width: 65%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px;
+        }
+        .info-column2 {
+            width: 75%;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 10px;
+            letter-spacing: 0.2em;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            position: relative;
+            
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+
+        .image-container:hover {
+            filter: grayscale(0%); /* Change 0% to 100% for black and white effect */
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            max-height: 400px;
+            
+        }
+
+        .image-description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #aide-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #aide-btn:hover {
+            background-color: #555;
+        }
+        #texte-defilant {
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff; /* Animation du curseur clignotant */
+            padding: 10px;
+            font-size: 20px;
+        }
+        #texte-defilant-container {
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            margin: 10px;
+            font-size: 20px;
+            letter-spacing: 0.2em;
+        }
+
+        #texte-defilant {
+            display: inline-block;
+            padding-right: 100%; /* Crée l'espace pour que le texte puisse défiler horizontalement */
+            animation: defilement 10s linear infinite; /* 10s est la durée du défilement */
+        }
+
+        /* Animation du défilement */
+        @keyframes defilement {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .scrolling-text-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh; /* Utilisez 100vh pour occuper toute la hauteur de la fenêtre */
+            transform-origin: top right;
+            writing-mode: vertical-rl;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .scrolling-text {
+            display: inline-block;
+            animation: scroll-up 10s linear infinite;
+        }
+
+        @keyframes scroll-up {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        .profile-picture2 {
+            width: 100px;
+            height: 100px;
+            border-radius: 30%;
+            overflow: hidden;
+            border: 1px solid #fff;
+            background: url('file:///Users/chaimabenfarhat/Downloads/mon_app/cils4.jpg') no-repeat center center;
+            background-size: cover;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button id="aide-btn">⚙️</button>
+        <div class="profile-picture"></div>
+        <h1>ELF Beauty </h1>
+        <h4>S'épanouir en Beauté, Révéler l'Éclat qui est en Vous.</h4>
+        
+    </header>
+    <div class="scrolling-text-container">
+        <div class="scrolling-text">
+            <p>ELF Beauty est la pour vous embellir ...</p>
+            <!-- Ajoutez d'autres phrases si nécessaire -->
+        </div>
+    </div>
+    <div id="texte-defilant-container">
+        <div id="texte-defilant">Bienvenue chez ELF Beauty </div>
+    </div>
+    <nav>
+        <a href="essaie.html">Accueil</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="contactermoi.html">Contact</a>
+        <a href="disponibilités.html">Disponibilités</a>
+    </nav>
+
+    <div class="main-content">
+
+        <div class="product-slider owl-carousel">
+            <div><img src="file:///Users/chaimabenfarhat/Downloads/mon_app/cils2.jpg" alt="shampoing"></div>
+            <div><img src="file:///Users/chaimabenfarhat/Downloads/mon_app/cils1.jpg" alt="Nom du produit 2"></div>
+            <div><img src="file:///Users/chaimabenfarhat/Downloads/mon_app/babyboomer.jpg" alt="Nom du produit 1"></div>
+            <div><img src="file:///Users/chaimabenfarhat/Downloads/projet%202/ongle2.jpg" alt="Nom du produit 2"></div>
+            <div><img src="file:///Users/chaimabenfarhat/Downloads/mon_app/onglesite.jpg" alt="Nom du produit 1"></div>
+        </div>
+
+        <div class="info-column">
+            <h2>Dates d'ouverture et de fermeture</h2>
+            <p>Lundi - Vendredi : 9h00 - 18h00</p>
+            <p>Samedi : 10h00 - 16h00</p>
+            <p>Dimanche : Fermé</p>
+        </div>
+
+    </div>
+
+    <!-- Image Row with Descriptions -->
+    <div class="image-row">
+        <div class="image-container" onclick="showImageDescription('Image 1')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/cils1.jpg" alt="Description 1">
+            <div class="image-description">cil à cil </div>
+        </div>
+        <div class="image-container" onclick="showImageDescription('Image 2')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/cils2.jpg" alt="Description 2">
+            <div class="image-description">Volume russe</div>
+        </div>
+        <div class="image-container" onclick="showImageDescription('Image 3')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/biche.jpg" alt="Description 3">
+            <div class="image-description"> Pose biche </div>
+        </div>
+   
+    </div>
+    <a href="#">tout voir </a>
+    <div id="texte-defilant-container">
+        <div id="texte-defilant"> Des clientes plus que satisfaites </div>
+    </div>
+    <div class="info-column2">
+        <h2>Découvrez l'Élégance Redéfinie chez ELF Beauty</h2>
+        <p>Plongez dans une oasis de détente et de raffinement où chaque détail </p>
+        <p>est conçu pour sublimer votre beauté naturelle.</p>
+        <p>Chez ELF Beauty, nous vous offrons bien plus qu'une simple expérience de beauté.</p>
+    </div>
+    <div class="image-row">
+        <div class="image-container" onclick="showImageDescription('Image 1')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/projet%202/ongle3.jpg" alt="Description 1">
+            <div class="image-description">Pose extra </div>
+        </div>
+        <div class="image-container" onclick="showImageDescription('Image 2')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/projet%202/ongle2.jpg" alt="Description 2">
+            <div class="image-description">Rose argenté</div>
+        </div>
+        <div class="image-container" onclick="showImageDescription('Image 3')">
+            <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/babyboomer.jpg" alt="Description 3">
+            <div class="image-description"> babyboomer </div>
+        </div>
+    </div>
+    <a href="#" id="toutVoirlink">tout voir </a>
+    
+    <div class="info-column2">
+        <h2>Expertise en Ongles et Cils</h2>
+        <p>Chez ELF Beauty, nous sommes passionnés par l'art de sublimer vos ongles et cils.  </p>
+        <p>Nos experts en beauté sont dévoués à offrir des services exceptionnels,</p>
+        <p>que ce soit pour une pose d'ongles tendance, une extension de cils sophistiquée,</p>
+        <p>ou une manucure et pédicure relaxante.</p>
+    </div>
+        <div class="image-row">
+            <div class="image-container" onclick="showImageDescription('Image 1')">
+                <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/pedicure3.jpg" alt="Description 1">
+                <div class="image-description">pedicure neutre </div>
+            </div>
+            <div class="image-container" onclick="showImageDescription('Image 2')">
+                <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/pedicurerouge.jpg" alt="Description 2">
+                <div class="image-description">pedicure rouge</div>
+            </div>
+            <div class="image-container" onclick="showImageDescription('Image 3')">
+                <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/pedicure.jpg" alt="Description 3">
+                <div class="image-description"> french pedicure</div>
+            </div>
+        </div>
+        <a href="#">tout voir </a>
+        <div id="texte-defilant-container">
+            <div id="texte-defilant">Un large choix de disponibilités  </div>
+        </div>
+        
+    
+        <div class="info-column2">
+            <h2>Services Personnalisés</h2>
+            <div class="image-container" onclick="showImageDescription('Image 1')">
+                <img src="file:///Users/chaimabenfarhat/Downloads/mon_app/cils1.jpg" alt="Description 1">
+                <div class="image-description">cil à cil </div>
+            </div>
+            <a href="disponibilités.html" id="toutVoirlink">je craque </a>
+            <p>Chaque personne est unique, c'est pourquoi nos services sont entièrement personnalisés pour répondre à vos besoins spécifiques. </p>
+            <p>Que vous recherchiez une transformation audacieuse ou une petite touche de raffinement,</p>
+            <p>notre équipe d'experts travaille en collaboration avec vous pour créer un look qui reflète votre style personnel.</p>
+        </div>
+        <div class="info-column2">
+            <h2>Engagement envers la Satisfaction Client</h2>
+            <p>La satisfaction de nos clients est notre priorité absolue. </p>
+            <p>Notre équipe dévouée s'engage à fournir un service attentionné et professionnel à chaque visite.</p>
+            <p>Nous croyons que chaque client mérite d'être traité comme une personne unique, et nous nous efforçons de dépasser vos attentes à chaque étape de votre parcours beauté.
+
+            </p>
+        </div>
+        <div id="texte-defilant-container">
+            <div id="texte-defilant"> Des clientes plus que satisfaites </div>
+        </div>
+        <div class="main-content">
+
+            <div class="info-column2">
+                <div class="profile-picture2"></div>
+                <h2>ELF Beauty</h2>
+
+                <p>Révélez la beauté naturelle de vos yeux avec nos extensions de cils impeccables.</p>
+                <p>L'art de sublimer la beauté naturelle. </p>
+                <p>Ongles et cils conçus pour vous.</p>
+            </div>
+    
+            <div class="info-column2">
+                <div class="profile-picture2"></div>
+                <h2>ELF Beauty</h2>
+                <p>Exprimez-vous à travers vos ongles. </p>
+                <p>Des designs uniques pour chaque occasion.</p>
+                <p>Des cils volumineux, des regards éblouissants.</p>
+            </div>
+    
+        </div>
+
+    <footer>
+        &copy; 2023 Votre Institut de Beauté
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.product-slider').owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                margin: 10,
+                nav: true,
+                navText: ['<button class="slick-prev">◀︎</button>', '<button class="slick-next">►</button>'],
+            });
+        });
+
+        function showImageDescription(description) {
+            alert('Description: ' + description);
+            // You can replace the alert with any action you want
+        }
+    </script>
+    
+    
+
+</body>
+</html>
+

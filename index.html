@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Webdesigner</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: fade-in 1s ease;
+            text-align: center;
+        }
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header h2 {
+            color: #777;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        header a {
+            text-decoration: none;
+            color: #2575fc;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        header a:hover {
+            color: #ff4500;
+        }
+        .section {
+            margin-bottom: 20px;
+            animation: slide-up 0.5s ease;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+        @keyframes slide-up {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .skills {
+            width: 100%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin: 20px 0;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer p {
+            margin: 0;
+            padding: 10px;
+            color: #fff;
+        }
+        /* Ajout d'animations pour les liens et les images */
+        a, img {
+            transition: transform 0.3s ease-in-out;
+        }
+        a:hover, img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BEN FARHAT Chaima</h1>
+            <h2>Webdesigner</h2>
+            <a href="portfolio.html">Portfolio</a> <!-- Animation de survol des liens -->
+        
+                <a href="aboutme.html">About Me</a>
+                <a href="experience.html">Experiences</a>
+                <a href="contact.html">Contacts</a>
+        
+        </header>
+       
+</body>
+</html>
